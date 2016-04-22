@@ -1,0 +1,175 @@
+{	
+	"Democratic" : {
+		"Bernie Sanders" : {
+			"Total" : 2000,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		},
+		"Hillary Clinton" : {
+			"Total" : 1600,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		},
+		"Jim Webb" : {
+			"Total" : 1000,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		}
+	},
+	"Republican" : {
+		"Trump" : {
+			"Total" : 1000,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		},
+		"Trump" : {
+			"Total" : 1000,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		},
+		"Cruz" : {
+			"Total" : 1000,
+			"Campus Donations" : {
+				"UCLA" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSB" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				},
+				"UCSD" : {
+					"Undergraduate" : 100,
+					"Graduate" : 200
+				}
+			},
+			"Locations" : {
+				"Oakland" : {
+					"Money" : 100,
+					"Number of People" : 100
+				},
+				"Los Angeles" : {
+					"Money" : 100,
+					"Number of People" : 100
+				}
+
+			}
+		}
+	}
+
+}
