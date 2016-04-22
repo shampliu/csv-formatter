@@ -117,8 +117,6 @@ name_hash = {
 	"Graham, Lindsey O." 				: ('rep', "Graham"),
 	"Trump, Donald J." 					: ('rep', "Trump"),
 	"Perry, James R. (Rick)" 			: ('rep', "Perry")
-
-
 }
 
 def format_name(n):
@@ -149,9 +147,10 @@ def format_college(c):
 	return college_hash.get(c)
 
 job_hash = {
-	"STUDENT" 			: "student",
+	"STUDENT" 			: "undergraduate",
 	"PROFESSOR"			: "professor",
-	"FACULTY"			: "faculty"
+	"FACULTY"			: "faculty",
+	"GRADUATE STUDENT"	: "graduate"
 }
 
 def format_job(j):
