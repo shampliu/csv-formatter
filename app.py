@@ -1,4 +1,5 @@
 import csv
+import json
 
 r1 = csv.reader(open('sanders.csv', 'rb'))
 r1.next()	# skip first line
@@ -24,9 +25,6 @@ d = {
 		'Sanders' : {
 			"total" : 0,
 			"colleges" : {
-				"ucla" : {
-
-				}
 
 			},
 			"locations" : {
@@ -69,7 +67,23 @@ for row in dictReader:
 
 	cand["total"] += amt
 	print cand["total"]
-    # for key in row:
-    # 	print key
-        # d[key].append(row[key])
-        # print "%s : %s " % (key, row[key])
+
+	# handle location
+	loc = cand["locations"]
+	city = row["contbr_city"] 
+	if loc.has_key(city):
+		loc[city]["total"] += amt
+		loc[city]["donators"] += 1
+	else:
+		loc[city] = {
+			"total" : amt,
+			"donators" : 1 
+		}
+
+json.dump(d, jsonfile, indent=4, separators=(',', ': '))
+print(json.dumps(d))
+
+
+
+
+        
