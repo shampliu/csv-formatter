@@ -1,6 +1,7 @@
 import csv
 import json
 import re
+import copy
 
 r1 = csv.reader(open('donations.csv', 'rb'))
 r1.next()	# skip first line
@@ -193,12 +194,86 @@ job_hash = {
 	"GRADUATE STUDENT"	: "graduate"
 }
 
-def format_job(j):
-	# student = re.compile('[\w]*STUDENT[\w]*')
-	# if student.match(j):
-	# 	return "undergraduate"
+unique_name_set = set()	
 
-	return job_hash.get(j)
+with open('donations.csv', 'rb') as csvfile1:
+	reader = csv.DictReader(csvfile1)
+	for row in reader:
+		if (format_college(row["contbr_employer"]) is not None):
+			unique_name_set.add(row["contbr_occupation"])
+
+undergrad_re = re.compile('STUDENT')
+professor_re = re.compile('COLLEGE|PROF|LECTURER|TEACHER|EDUCATOR|INSTRUCTOR')
+tech_re = re.compile('ENGINEER|SOFTWARE|DEVELOPER|DATA|SCIENTIST|ANALYST|COMPUTER|COMPUTING|IT|PROGRAM|TECH|ACADEMIC')
+admin_re = re.compile('ADMIN')
+faculty_re = re.compile('STAFF|FACULTY|OFFICE|LIBRARIAN|ASSISTANT|AFFAIR|LIBRARY')
+arts_re = re.compile('ART|MUSIC[I]*AN|DESIGN')
+health_re = re.compile('HEALTH|SURGEON|SURGICAL|PHYSICIAN|MD|SOCIOLOGIST|PSYCHIATRIST|DOCTOR|NURSE|DENTAL|DENTIST|R.N.|RN|CLERICAL|PSYCHO|CLINIC')
+grad_re = re.compile('GRAD')
+research_re = re.compile("BOOK|RESEARCH|LAB|BIO(LOGIST)?|HISTORIAN|ECONOMIST|ARCHIVIST")
+retired_re = re.compile("RETIRE(D)?")
+legal_re = re.compile("ATTORNEY|LAWYER")
+other_re = re.compile("[a-z][0-9]")
+
+
+occupation_match_dict = {
+	"UNDERGRAD": undergrad_re,
+	"PROFESSOR": professor_re,
+	"TECH": tech_re,
+	"ADMINISTRATIVE": admin_re,
+	"FACULTY": faculty_re,
+	"ARTS": arts_re,
+	"HEALTH": health_re,
+	"GRAD": grad_re,
+	"RESEARCH": research_re,
+	"RETIRED": retired_re,
+	"LEGAL": legal_re,
+	"OTHER": other_re
+}
+
+occupation_dict = {}
+
+for key in occupation_match_dict:
+	occupation_dict[key] = []
+
+final_name_set = unique_name_set.copy()
+# print(type(final_name_set))
+
+counta = 0
+for item in unique_name_set:
+	match = False
+	for m in occupation_match_dict:
+		if (re.search(occupation_match_dict[m], item) != None):
+			match = True
+			counta += 1
+			occupation_dict[m].append(item)
+			final_name_set.discard(item)
+	if not match:
+		occupation_dict["OTHER"].append(item)
+		final_name_set.discard(item)
+
+# format("GRADUTE STUDENT RESEARCHER") --> GRAD
+def format_job(input):
+	for i in occupation_dict:
+		item_list = occupation_dict[i]
+		for j in item_list:
+			if j == input:
+				return i
+
+
+
+
+
+
+
+
+
+# def format_job(j):
+# 	# student = re.compile('[\w]*STUDENT[\w]*')
+# 	# if student.match(j):
+# 	# 	return "undergraduate"
+
+# 	return unique_names.format(j)
 
 
 dict_reader = csv.DictReader(csvfile, fieldnames, delimiter = ',', quotechar = '"')
