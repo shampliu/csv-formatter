@@ -14,7 +14,7 @@ for row in r1:
 
 csvfile.close()
 csvfile = open('result.csv', 'rb')
-jsonfile = open('result.json', 'wb')
+jsonfile = open('result2.json', 'wb')
 
 d = [
 	{
@@ -335,6 +335,7 @@ for row in dict_reader:
 
 			# handle jobs
 			found_job = False 
+			coll_name = curr_c["name"]
 
 			for j in cand["jobs"]:
 				if j["title"] == job:
@@ -342,21 +343,16 @@ for row in dict_reader:
 					j["donators"] += 1
 					found_job = True
 
-					found_coll = False
-					for coll in j["colleges"]:
-						if coll["name"] == curr_c["name"]:
-							coll["donators"] += 1
-							coll["total"] += amt
-							found_coll = True
-							break
+					if j["colleges"].has_key(coll_name):
+						j["colleges"][coll_name]["donators"] += 1
+						j["colleges"][coll_name]["total"] += amt
 
-					if not found_coll:
-						e = {
-							"donators" : 1,
+					else:
+						j["colleges"][coll_name] = {
 							"total" : amt,
-							"name" : curr_c["name"]
+							"donators" : 1
 						}
-						j["colleges"].append(e)
+
 
 					break
 
@@ -365,14 +361,13 @@ for row in dict_reader:
 					"title" : job,
 					"total" : amt,
 					"donators" : 1,
-					"colleges" : []
+					"colleges" : {}
 				}
-				e = {
+
+				j["colleges"][coll_name] = {
 					"donators" : 1,
-					"total" : amt,
-					"name" : curr_c["name"]
+					"total" : amt
 				}
-				j["colleges"].append(e)
 
 				cand["jobs"].append(j)
 
