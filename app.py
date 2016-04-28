@@ -23,7 +23,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Clinton",
@@ -31,7 +32,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Lessig",
@@ -39,7 +41,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "O'Malley",
@@ -47,7 +50,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Webb",
@@ -55,7 +59,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Carson",
@@ -63,7 +68,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Cruz",
@@ -71,7 +77,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Kasich",
@@ -79,7 +86,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Bush",
@@ -87,7 +95,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Perry",
@@ -95,7 +104,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Fiorina",
@@ -103,7 +113,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Rubio",
@@ -111,7 +122,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Paul",
@@ -119,7 +131,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Trump",
@@ -127,7 +140,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	},
 	{
 		"name" : "Graham",
@@ -135,7 +149,8 @@ d = [
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
-		"locations" : []
+		"locations" : [],
+		"jobs" : []
 	}
 ]
 
@@ -309,8 +324,8 @@ for row in dict_reader:
 			new_c = {
 				"name" : college,
 				"donators" : 1,
-				"total" : amt,
-				"jobs" : []
+				"total" : amt
+				# "jobs" : []
 			}
 			college_arr.append(new_c)
 			curr_c = new_c 
@@ -321,20 +336,45 @@ for row in dict_reader:
 			# handle jobs
 			found_job = False 
 
-			for j in curr_c["jobs"]:
+			for j in cand["jobs"]:
 				if j["title"] == job:
 					j["total"] += amt
 					j["donators"] += 1
 					found_job = True
+
+					found_coll = False
+					for coll in j["colleges"]:
+						if coll["name"] == curr_c["name"]:
+							coll["donators"] += 1
+							coll["total"] += amt
+							found_coll = True
+							break
+
+					if not found_coll:
+						e = {
+							"donators" : 1,
+							"total" : amt,
+							"name" : curr_c["name"]
+						}
+						j["colleges"].append(e)
+
 					break
 
 			if not found_job:
 				j = {
 					"title" : job,
 					"total" : amt,
-					"donators" : 1
+					"donators" : 1,
+					"colleges" : []
 				}
-				curr_c["jobs"].append(j)
+				e = {
+					"donators" : 1,
+					"total" : amt,
+					"name" : curr_c["name"]
+				}
+				j["colleges"].append(e)
+
+				cand["jobs"].append(j)
 
 
 	# handle location
