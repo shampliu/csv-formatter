@@ -196,16 +196,18 @@ college_hash = {
 	"UCSF" 																			: "ucsf",
 	"UNIVERSITY OF CALIFORNIA, SAN FRANCISCO" 	: "ucsf",
 	"UCD" 																			: "ucd",
-	"UNIVERSITY OF CALIFORNIA, DAVIS" 					: "ucd"
+	"UNIVERSITY OF CALIFORNIA, DAVIS" 					: "ucd",
+	"UNIVERSITY OF CALIFORNIA, IRVINE" 					: "uci",
+	"UCI" 																			: "uci"
 }
 
 def format_college(c):
 	return college_hash.get(c)
 
 job_hash = {
-	"STUDENT" 			: "undergraduate",
-	"PROFESSOR"			: "professor",
-	"FACULTY"			: "faculty",
+	"STUDENT" 					: "undergraduate",
+	"PROFESSOR"					: "professor",
+	"FACULTY"						: "faculty",
 	"GRADUATE STUDENT"	: "graduate"
 }
 
@@ -252,7 +254,6 @@ for key in occupation_match_dict:
 	occupation_dict[key] = []
 
 final_name_set = unique_name_set.copy()
-# print(type(final_name_set))
 
 counta = 0
 for item in unique_name_set:
