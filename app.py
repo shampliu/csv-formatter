@@ -151,6 +151,15 @@ d = [
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
+	},
+	{
+		"name" : "Huckabee",
+		"party" : "rep",
+		"total" : 0,
+		"colleges_total" : 0,
+		"colleges" : [],
+		"locations" : [],
+		"jobs" : []
 	}
 ]
 
@@ -172,7 +181,8 @@ name_hash = {
 	"Paul, Rand" 										: ("Paul", 12),
 	"Graham, Lindsey O." 						: ("Graham", 14),
 	"Trump, Donald J." 							: ("Trump", 13),
-	"Perry, James R. (Rick)" 				: ("Perry", 9)
+	"Perry, James R. (Rick)" 				: ("Perry", 9),
+	"Huckabee, Mike"								: ("Huckabee", 15)
 }
 
 def format_name(n):
@@ -183,26 +193,39 @@ college_hash = {
 	"UNIVERSITY OF CALIFORNIA, LOS ANGELES" 		: "ucla",
 	"UCB" 																			: "ucb",
 	"UNIVERSITY OF CALIFORNIA, BERKELEY" 				: "ucb",
+	"UNIV. OF CALIFORNIA, BERKELY"							: "ucb",
 	"UCSB" 																			: "ucsb",
 	"UNIVERSITY OF CALIFORNIA, SANTA BARBARA" 	: "ucsb",
 	"UCSC" 																			: "ucsc",
+	"UNIVERSITY OF CA, SANTA CRUZ" 							: "ucsc",
 	"UNIVERSITY OF CALIFORNIA, SANTA CRUZ" 			: "ucsc",
+	"UNIV. OF CALIFORNIA, SANTA CRUZ"						: "ucsc", 
 	"UCR" 																			: "ucr",
 	"UNIVERSITY OF CALIFORNIA, RIVERSIDE" 			: "ucr",
 	"UCSD" 																			: "ucsd",
 	"UNIVERSITY OF CALIFORNIA, SAN DIEGO" 			: "ucsd",
+	"UNIV. OF SAN DIEGO/US COMM'N ON CIVIL"			: "ucsd",
 	"UCM" 																			: "ucm",
 	"UNIVERSITY OF CALIFORNIA, MERCED" 					: "ucm",
 	"UCSF" 																			: "ucsf",
 	"UNIVERSITY OF CALIFORNIA, SAN FRANCISCO" 	: "ucsf",
 	"UCD" 																			: "ucd",
 	"UNIVERSITY OF CALIFORNIA, DAVIS" 					: "ucd",
+	"UNIV. OF CALIF. DAVIS"											: "ucd", 
+	"UNIV. OF CALIF. SCH. OF MEDICINE"					: "ucd",
 	"UNIVERSITY OF CALIFORNIA, IRVINE" 					: "uci",
-	"UCI" 																			: "uci"
+	"UCI" 																			: "uci",
 }
 
 def format_college(c):
-	return college_hash.get(c)
+	r = college_hash.get(c)
+	if r is not None:
+		return r
+	elif c == "UNIV OF CA" or c == "UNIVERSITY OF CALIFORNIA" or c == "UNIVERSITY OF CA" or c == "UNIV OF CALIFORNIA" or c == "UNIV. OF CALIFORNIA" or c == "UNIV. OF CA":
+		print c 
+		return None
+	else:
+		return None
 
 job_hash = {
 	"STUDENT" 					: "undergraduate",
