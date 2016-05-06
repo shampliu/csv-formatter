@@ -160,6 +160,24 @@ d = [
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
+	},
+	{
+		"name" : "Christie",
+		"party" : "rep",
+		"total" : 0,
+		"colleges_total" : 0,
+		"colleges" : [],
+		"locations" : [],
+		"jobs" : []
+	},
+	{
+		"name" : "Other",
+		"party" : "mixed",
+		"total" : 0,
+		"colleges_total" : 0,
+		"colleges" : [],
+		"locations" : [],
+		"jobs" : []
 	}
 ]
 
@@ -182,7 +200,8 @@ name_hash = {
 	"Graham, Lindsey O." 						: ("Graham", 14),
 	"Trump, Donald J." 							: ("Trump", 13),
 	"Perry, James R. (Rick)" 				: ("Perry", 9),
-	"Huckabee, Mike"								: ("Huckabee", 15)
+	"Huckabee, Mike"								: ("Huckabee", 15),
+	"Christie, Christopher J."			: ("Christie", 16)
 }
 
 def format_name(n):
@@ -217,13 +236,29 @@ college_hash = {
 	"UCI" 																			: "uci",
 }
 
-def format_college(c):
-	r = college_hash.get(c)
+city_hash = {
+	"DAVIS" : "ucd",
+	"LOS ANGELES" : "ucla",
+	"SANTA CRUZ" : "ucsc", 
+	"BERKELEY" : "ucb",
+	"RIVERSIDE" : "ucr", 
+	"MERCED" : "ucm",
+	"SAN DIEGO" : "ucsd",
+	"IRVINE" : "uci",
+	"SAN FRANCISCO" : "ucsf",
+	"SANTA BARBARA" : "ucsb"
+}
+
+def format_college(e, c):
+	r = college_hash.get(e)
 	if r is not None:
 		return r
-	elif c == "UNIV OF CA" or c == "UNIVERSITY OF CALIFORNIA" or c == "UNIVERSITY OF CA" or c == "UNIV OF CALIFORNIA" or c == "UNIV. OF CALIFORNIA" or c == "UNIV. OF CA":
-		print c 
-		return None
+	elif e == "UNIV OF CA" or c == "UNIVERSITY OF CALIFORNIA" or c == "UNIVERSITY OF CA" or c == "UNIV OF CALIFORNIA" or c == "UNIV. OF CALIFORNIA" or c == "UNIV. OF CA":
+		r2 = city_hash.get(c) 
+		if r2 is None:
+			return "n/a"
+		else:
+			return r2
 	else:
 		return None
 
@@ -239,7 +274,7 @@ unique_name_set = set()
 with open('donations.csv', 'rb') as csvfile1:
 	reader = csv.DictReader(csvfile1)
 	for row in reader:
-		if (format_college(row["contbr_employer"]) is not None):
+		if (format_college(row["contbr_employer"], row["contbr_city"]) is not None):
 			unique_name_set.add(row["contbr_occupation"])
 
 undergrad_re = re.compile('STUDENT')
@@ -321,7 +356,8 @@ for row in dict_reader:
 	t = format_name( row["cand_nm"] )
 	if t is None:
 		print row["cand_nm"]
-		continue
+		# continue
+		t = ("Other", 17)
 	ind =  t[1]
 	cand = d[ind]
 
@@ -331,7 +367,7 @@ for row in dict_reader:
 	cand["total"] += amt
 	# print cand["total"]
 
-	college = format_college( row["contbr_employer"] )
+	college = format_college( row["contbr_employer"], row["contbr_city"] )
 	if college is not None:
 		college_arr = cand["colleges"]
 		cand["colleges_total"] += amt 
