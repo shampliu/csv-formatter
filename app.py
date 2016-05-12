@@ -269,7 +269,36 @@ city_hash = {
 	"SANTA MONICA" : "ucla",
 	"SACRAMENTO" : "ucd",
 	"NORTH HOLLYWOOD": "ucla",
-	"CARLSBAD" : "ucsd"
+	"CARLSBAD" : "ucsd",
+	"OAKLAND" : "ucb",
+	"ALAMEDA" : "ucb",
+	"SAN LEANDRO" : "ucb",
+	"ALBANY" : "ucb", 
+	"SEBASTOPOL" : "ucb",
+	"CASTRO VALLEY" : "ucsf",
+	"DANA POINT" : "ucsd",
+	"ORANGEVALE" : "ucd",
+	"WALNUT CREEK" : "ucb",
+	"FAIRFIELD" : "ucd",
+	"LAKE FOREST" : "uci",
+	"TARZANA" : "ucla",
+	"VENICE" : "ucla",
+	"BISHOP" : "ucla",
+	"ALISO VIEJO" : "uci",
+	"DEL MAR" : "ucsd",
+	"FRESNO" : "ucsf",
+	"GOLETA" : "ucsb",
+	"GILROY" : "ucsc",
+	"BUENA PARK" : "ucla",
+	"CAMPBELL" : "ucsc",
+	"RENO" : "ucsf",
+	"CORONA" : "ucr",
+	"COSTA MESA" : "uci",
+	"TUSTIN" : "uci",
+	"CYPRESS" : "uci",
+	"TEMECULA" : "ucsd"
+
+
 }
 
 def format_college(e, c):
