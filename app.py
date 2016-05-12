@@ -225,33 +225,93 @@ name_hash = {
 def format_name(n):
 	return name_hash.get(n)		# returns None on other name
 
+
 college_hash = {
 	"UCLA" 																			: "ucla", 
 	"UNIVERSITY OF CALIFORNIA, LOS ANGELES" 		: "ucla",
+	"UNIVERSITY OF CALIFORNIA LOS ANGELES" 			: "ucla",
+	"UNIVERSITY OF CALIFORNIA LOS ANGELES H"		: "ucla",
+	"UNIVERSITY OF CALIFORNIA- LOS ANGELES"			: "ucla",
+
 	"UCB" 																			: "ucb",
 	"UNIVERSITY OF CALIFORNIA, BERKELEY" 				: "ucb",
+	"UNIVERSITY OF CALIFORNIA BERKELEY" 				: "ucb",
 	"UNIV. OF CALIFORNIA, BERKELEY"							: "ucb",
+	"UNIV.OF CALIFORNIA,BERKELEY"								: "ucb",
+	"UNIVERSITY OF CALIFORNIA, BERKLEY SCHO"		: "ucb",
+	"UNIVERSITY OF CALIFORNIA AT BERKELELY"			: "ucb",
+	"UNIVERSITY OF CALIFORNIA; BERKELEY; SC"		: "ucb",
+	"UNIVERSITY OF CALIFORNIA - BER"						: "ucb",
+	"UNIVERSITY OF CALIFORNIA BERKELEY ALL" 		: "ucb",
+
 	"UCSB" 																			: "ucsb",
 	"UNIVERSITY OF CALIFORNIA, SANTA BARBARA" 	: "ucsb",
+	"UNIVERSITY OF CALIFORNIA SANTA BARBARA" 		: "ucsb",
+	"UNIVERSITY OF CALFORNIA SANTA BARBARA"			: "ucsb",
+	"UNIVERSISTY OF CALIFORNIA, SANTA BARBA"		: "ucsb",
+	"UNIVESITY OF CALIFORNIA, SANTA BARBARA"		: "ucsb",
+	"THE UNIVERSITY OF CALIFORNIA AT SANTA"			: "ucsb",
+	"UNIVERSITY OF CALIFORNIA, SANTA BARBAR"		: "ucsb",
+	"UNIVERSITY OF CALIFORNIA - SANTA BARBA"		: "ucsb",
+	"UNIVERSITY OF CALIFORNIA- SANTA BARBAR"		: "ucsb",
+
 	"UCSC" 																			: "ucsc",
 	"UNIVERSITY OF CA, SANTA CRUZ" 							: "ucsc",
+	"UNIV. CAL. SANTA CRUZ"											: "ucsc", 
 	"UNIVERSITY OF CALIFORNIA, SANTA CRUZ" 			: "ucsc",
+	"UNIVERSITY OF CALIFORNIA SANTA CRUZ" 			: "ucsc",
 	"UNIV. OF CALIFORNIA, SANTA CRUZ"						: "ucsc", 
+	"UNIVERSITY CALIFORNIA SANTA CRUZ"					: "ucsc",
+	"UNIV CALIFORNIA SANTA CRUZ"								: "ucsc",
+	"THE UNIVERSITY OF CA AT SANTA CRUZ"				: "ucsc",
+
 	"UCR" 																			: "ucr",
 	"UNIVERSITY OF CALIFORNIA, RIVERSIDE" 			: "ucr",
+	"UNIVERSITY OF CALIFORNIA RIVERSIDE" 				: "ucr",
+	"UNIVERSITY OF CALIFORNIA AT RIVERSIDE"			: "ucr",
+
 	"UCSD" 																			: "ucsd",
 	"UNIVERSITY OF CALIFORNIA, SAN DIEGO" 			: "ucsd",
+	"UNIVERSITY OF CALIFORNIA SAN DIEGO" 				: "ucsd",
+	"UNIVERSITY OF CALIFORNIA SAN DIEGO HEA" 		: "ucsd",
+	"UNIVERSITY OF CALIFRONIA- SAN DIEGO"				: "ucsd",
+	"UNIV OF CALIF SAN DIEGO"										: "ucsd",
 	"UNIV. OF SAN DIEGO/US COMM'N ON CIVIL"			: "ucsd",
+	"UNIV CALIF SAN DIEGO"											: "ucsd",
+	"UNIVERSITY OF CALIFORNIA -SAN DIEGO"				: "ucsd",
+	"UNIV. CALIFORNIA AT SAN DIEGO"							: "ucsd",
+
 	"UCM" 																			: "ucm",
 	"UNIVERSITY OF CALIFORNIA, MERCED" 					: "ucm",
+	"UNIVERSITY OF CALIFORNIA MERCED" 					: "ucm",
+
 	"UCSF" 																			: "ucsf",
 	"UNIVERSITY OF CALIFORNIA, SAN FRANCISCO" 	: "ucsf",
+	"UNIVERSITY OF CALIFORNIA SAN FRANCISCO" 		: "ucsf",
+	"UNIVERSITY OF CALIFORNIA, SAN FRANCISC"		: "ucsf",
+	"UNIVERSITY OF CALIFORNIA SAN FRANCISC"			: "ucsf",
+	"UNIVERSITY OF CALIFORNIA SF"								: "ucsf",
+	"UNIVERSITY OF CALIFONIA, SAN FRANCISCO"		: "ucsf",
+	"UNIVERSITY OF CALIFORNIA-SAN FRANCISCO"		: "ucsf",
+
 	"UCD" 																			: "ucd",
 	"UNIVERSITY OF CALIFORNIA, DAVIS" 					: "ucd",
-	"UNIV. OF CALIF. DAVIS"											: "ucd", 
+	"UNIV. OF CALIF. DAVIS"											: "ucd",
+	"UNIVERSITY OF CALIFORNIA DAVIS" 						: "ucd",
+	"UNIVERSITY CA DAVIS POLICE"								: "ucd",
+	"UNIV. OF CALIFORNIA-DAVIS"									: "ucd",
 	"UNIV. OF CALIF. SCH. OF MEDICINE"					: "ucd",
+	"UNIVERSITY OF CALIFORNIA-DAVIS"						: "ucd",
+	"UNIVERSITY OF CALIFORNIA AT DAVIS"					: "ucd",
+	"UNIVERSITY OF CALIFORNIA DAVIS MEDICAL"		: "ucd",
+
 	"UNIVERSITY OF CALIFORNIA, IRVINE" 					: "uci",
+	"UNIVERSITY OF CALIFORNIA IRVINE" 					: "uci",
+	"UNIVERSITY OF CALIFORNIA-IRVINE"						: "uci",
 	"UCI" 																			: "uci",
+	"UNIVERSITY OF CALIFORNIA AT IRVINE"				: "uci",
+	"UNIVERSITY OF CALIF., IRVINE"							: "uci",
+	"UNIVERSITY OF CALIFORNIA, IRVINE, NURS"		: "uci"
 }
 
 city_hash = {
@@ -305,10 +365,10 @@ def format_college(e, c):
 	r = college_hash.get(e)
 	if r is not None:
 		return r
-	elif e == "UNIV OF CA" or e == "UNIVERSITY OF CALIFORNIA" or e == "UNIVERSITY OF CA" or e == "UNIV OF CALIFORNIA" or e == "UNIV. OF CALIFORNIA" or e == "UNIV. OF CA":
+	elif e == "UNIV OF CA" or e == "THE REGENTS OF THE UNIVERSITY OF CALIF" or e == "APPLE, INC.; UNIV OF CALIFORNIA" or e == "UNIVERSITY OF CALIFORNIA OFFICE OF THE" or e == "UNIVERSITY OF CALIFORNIA REGENTS" or e == "UNIV OF CALIF" or e == "UNIVERISTY OF CALIFORNIA" or e == "UNIVERSITY OF CALIFORNIA" or e == "UNIVERSITY OF CA" or e == "UNIV OF CALIFORNIA" or e == "UNIV. OF CALIFORNIA" or e == "UNIV. OF CA" or e == "UNIVERSITY  OF CALIFORNIA":
 		r2 = city_hash.get(c) 
 		if r2 is None:
-			print c
+			# print c
 			return "na"
 		else:
 			return r2
@@ -323,6 +383,8 @@ job_hash = {
 }
 
 unique_name_set = set()	
+
+possible_colleges_set = set()
 
 with open('donations.csv', 'rb') as csvfile1:
 	reader = csv.DictReader(csvfile1)
@@ -387,22 +449,6 @@ def format_job(input):
 			if j == input:
 				return i
 
-
-
-
-
-
-
-
-
-# def format_job(j):
-# 	# student = re.compile('[\w]*STUDENT[\w]*')
-# 	# if student.match(j):
-# 	# 	return "undergraduate"
-
-# 	return unique_names.format(j)
-
-
 dict_reader = csv.DictReader(csvfile, fieldnames, delimiter = ',', quotechar = '"')
 
 for row in dict_reader:
@@ -439,7 +485,7 @@ for row in dict_reader:
 				"name" : college,
 				"donators" : 1,
 				"total" : amt
-				# "jobs" : []
+
 			}
 			college_arr.append(new_c)
 			curr_c = new_c 
@@ -485,7 +531,20 @@ for row in dict_reader:
 
 				cand["jobs"].append(j)
 
+	else:
 
+		searchObj1 = re.search( r'UNIVERSITY', row["contbr_employer"], re.M|re.I)
+		searchObj2 = re.search( r'UNIV', row["contbr_employer"], re.M|re.I)
+		searchObj3 = re.search( r'CA', row["contbr_employer"], re.M|re.I)
+		searchObj4 = re.search( r'CALIF', row["contbr_employer"], re.M|re.I)
+		searchObj5 = re.search( r'CALIFORNIA', row["contbr_employer"], re.M|re.I)
+		if (searchObj1 or searchObj2) and (searchObj3 or searchObj4 or searchObj5):
+			possible_colleges_set.add(row["contbr_employer"])
+			# print row["contbr_employer"]
+
+for item in possible_colleges_set:
+	print item 
+print len(possible_colleges_set)
 	# handle location
 	# loc = cand["locations"]
 	# city = row["contbr_city"] 
