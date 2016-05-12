@@ -20,6 +20,7 @@ d = [
 	{
 		"name" : "Sanders",
 		"party" : "dem",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -29,6 +30,7 @@ d = [
 	{
 		"name" : "Clinton",
 		"party" : "dem",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -38,6 +40,7 @@ d = [
 	{
 		"name" : "Lessig",
 		"party" : "dem",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -47,6 +50,7 @@ d = [
 	{
 		"name" : "O'Malley",
 		"party" : "dem",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -56,6 +60,7 @@ d = [
 	{
 		"name" : "Webb",
 		"party" : "dem",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -65,6 +70,7 @@ d = [
 	{
 		"name" : "Carson",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -74,6 +80,7 @@ d = [
 	{
 		"name" : "Cruz",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -83,6 +90,7 @@ d = [
 	{
 		"name" : "Kasich",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -92,6 +100,7 @@ d = [
 	{
 		"name" : "Bush",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -101,6 +110,7 @@ d = [
 	{
 		"name" : "Perry",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -110,6 +120,7 @@ d = [
 	{
 		"name" : "Fiorina",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -119,6 +130,7 @@ d = [
 	{
 		"name" : "Rubio",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -128,6 +140,7 @@ d = [
 	{
 		"name" : "Paul",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -137,6 +150,7 @@ d = [
 	{
 		"name" : "Trump",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -146,6 +160,7 @@ d = [
 	{
 		"name" : "Graham",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -155,6 +170,7 @@ d = [
 	{
 		"name" : "Huckabee",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -164,6 +180,7 @@ d = [
 	{
 		"name" : "Christie",
 		"party" : "rep",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -173,6 +190,7 @@ d = [
 	{
 		"name" : "Other",
 		"party" : "mixed",
+		"donators" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -212,7 +230,7 @@ college_hash = {
 	"UNIVERSITY OF CALIFORNIA, LOS ANGELES" 		: "ucla",
 	"UCB" 																			: "ucb",
 	"UNIVERSITY OF CALIFORNIA, BERKELEY" 				: "ucb",
-	"UNIV. OF CALIFORNIA, BERKELY"							: "ucb",
+	"UNIV. OF CALIFORNIA, BERKELEY"							: "ucb",
 	"UCSB" 																			: "ucsb",
 	"UNIVERSITY OF CALIFORNIA, SANTA BARBARA" 	: "ucsb",
 	"UCSC" 																			: "ucsc",
@@ -365,6 +383,7 @@ for row in dict_reader:
 	amt = float(row["contb_receipt_amt"])
 
 	cand["total"] += amt
+	cand["donators"] += 1
 	# print cand["total"]
 
 	college = format_college( row["contbr_employer"], row["contbr_city"] )
