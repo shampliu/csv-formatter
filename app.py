@@ -264,7 +264,12 @@ city_hash = {
 	"SAN DIEGO" : "ucsd",
 	"IRVINE" : "uci",
 	"SAN FRANCISCO" : "ucsf",
-	"SANTA BARBARA" : "ucsb"
+	"SANTA BARBARA" : "ucsb",
+	"LA JOLLA" : "ucsd",
+	"SANTA MONICA" : "ucla",
+	"SACRAMENTO" : "ucd",
+	"NORTH HOLLYWOOD": "ucla",
+	"CARLSBAD" : "ucsd"
 }
 
 def format_college(e, c):
@@ -275,7 +280,7 @@ def format_college(e, c):
 		r2 = city_hash.get(c) 
 		if r2 is None:
 			print c
-			return "n/a"
+			return "na"
 		else:
 			return r2
 	else:
