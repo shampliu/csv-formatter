@@ -14,7 +14,7 @@ for row in r1:
 
 csvfile.close()
 csvfile = open('result.csv', 'rb')
-jsonfile = open('result2.json', 'wb')
+jsonfile = open('result.json', 'wb')
 
 d = [
 	{
@@ -356,7 +356,26 @@ city_hash = {
 	"COSTA MESA" : "uci",
 	"TUSTIN" : "uci",
 	"CYPRESS" : "uci",
-	"TEMECULA" : "ucsd"
+	"TEMECULA" : "ucsd",
+	"CORONA DEL MAR" : "uci",
+	"LAGUNA BEACH" : "uci",
+	"SANTA ANA" : "uci",
+	"ORANGE" :"uci",
+	"WEST HOLLYWOOD" : "ucla",
+	"CULVER CITY" : "ucla",
+	"SHERMAN OAKS" : "ucla",
+	"PACIFIC PALISADES" : "ucla",
+	"FAIRFAX" : "ucb",
+	"SAUSALITO" : "ucb",
+	"TIBURON" : "ucb",
+	"NEWPORT BEACH" : "uci",
+	"ANTIOCH" : "ucb",
+	"SOQUEL" : "ucsc",
+	"CARPINTERIA" : "ucsb",
+	"GUALALA" : "ucd",
+	"VALLEY VILLAGE" : "ucla",
+	"SAN RAFAEL" : "ucb",
+	"MILL VALLEY" : "ucb"
 
 
 }
@@ -368,7 +387,7 @@ def format_college(e, c):
 	elif e == "UNIV OF CA" or e == "THE REGENTS OF THE UNIVERSITY OF CALIF" or e == "APPLE, INC.; UNIV OF CALIFORNIA" or e == "UNIVERSITY OF CALIFORNIA OFFICE OF THE" or e == "UNIVERSITY OF CALIFORNIA REGENTS" or e == "UNIV OF CALIF" or e == "UNIVERISTY OF CALIFORNIA" or e == "UNIVERSITY OF CALIFORNIA" or e == "UNIVERSITY OF CA" or e == "UNIV OF CALIFORNIA" or e == "UNIV. OF CALIFORNIA" or e == "UNIV. OF CA" or e == "UNIVERSITY  OF CALIFORNIA":
 		r2 = city_hash.get(c) 
 		if r2 is None:
-			# print c
+			unknown_cities_set.add(c)
 			return "na"
 		else:
 			return r2
@@ -385,6 +404,7 @@ job_hash = {
 unique_name_set = set()	
 
 possible_colleges_set = set()
+unknown_cities_set = set()
 
 with open('donations.csv', 'rb') as csvfile1:
 	reader = csv.DictReader(csvfile1)
@@ -542,9 +562,14 @@ for row in dict_reader:
 			possible_colleges_set.add(row["contbr_employer"])
 			# print row["contbr_employer"]
 
-for item in possible_colleges_set:
+print "UNKNOWN CITIES: "
+for item in unknown_cities_set:
 	print item 
-print len(possible_colleges_set)
+print len(unknown_cities_set)
+
+# for item in possible_colleges_set:
+# 	print item 
+# print len(possible_colleges_set)
 	# handle location
 	# loc = cand["locations"]
 	# city = row["contbr_city"] 
