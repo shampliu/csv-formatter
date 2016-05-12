@@ -271,9 +271,10 @@ def format_college(e, c):
 	r = college_hash.get(e)
 	if r is not None:
 		return r
-	elif e == "UNIV OF CA" or c == "UNIVERSITY OF CALIFORNIA" or c == "UNIVERSITY OF CA" or c == "UNIV OF CALIFORNIA" or c == "UNIV. OF CALIFORNIA" or c == "UNIV. OF CA":
+	elif e == "UNIV OF CA" or e == "UNIVERSITY OF CALIFORNIA" or e == "UNIVERSITY OF CA" or e == "UNIV OF CALIFORNIA" or e == "UNIV. OF CALIFORNIA" or e == "UNIV. OF CA":
 		r2 = city_hash.get(c) 
 		if r2 is None:
+			print c
 			return "n/a"
 		else:
 			return r2
@@ -373,7 +374,7 @@ dict_reader = csv.DictReader(csvfile, fieldnames, delimiter = ',', quotechar = '
 for row in dict_reader:
 	t = format_name( row["cand_nm"] )
 	if t is None:
-		print row["cand_nm"]
+		# print row["cand_nm"]
 		# continue
 		t = ("Other", 17)
 	ind =  t[1]
