@@ -23,6 +23,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -33,6 +34,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -43,6 +45,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -53,6 +56,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -63,6 +67,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -73,6 +78,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -83,6 +89,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -93,6 +100,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -103,6 +111,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -113,6 +122,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -123,6 +133,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -133,6 +144,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -143,6 +155,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -153,6 +166,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -163,6 +177,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -173,6 +188,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -183,6 +199,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -193,6 +210,7 @@ d = [
 		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
+		"colleges_contributions" : 0,
 		"colleges" : [],
 		"locations" : [],
 		"jobs" : []
@@ -491,6 +509,7 @@ for row in dict_reader:
 	if college is not None:
 		college_arr = cand["colleges"]
 		cand["colleges_total"] += amt 
+		cand["colleges_contributions"] += 1
 
 		curr_c = None 
 		for c in college_arr:
