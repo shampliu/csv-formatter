@@ -437,15 +437,17 @@ admin_re = re.compile('ADMIN')
 faculty_re = re.compile('STAFF|FACULTY|OFFICE|LIBRARIAN|ASSISTANT|AFFAIR|LIBRARY')
 arts_re = re.compile('ART|MUSIC[I]*AN|DESIGN')
 health_re = re.compile('HEALTH|SURGEON|SURGICAL|PHYSICIAN|MD|SOCIOLOGIST|PSYCHIATRIST|DOCTOR|NURSE|DENTAL|DENTIST|R.N.|RN|CLERICAL|PSYCHO|CLINIC')
-grad_re = re.compile('GRAD')
+grad_re = re.compile('GRAD(UATE)?|DOCTORAL|PHD')
 research_re = re.compile("BOOK|RESEARCH|LAB|BIO(LOGIST)?|HISTORIAN|ECONOMIST|ARCHIVIST")
 retired_re = re.compile("RETIRE(D)?")
 legal_re = re.compile("ATTORNEY|LAWYER")
 other_re = re.compile("[a-z][0-9]")
 
 
+occupation_match_set = ("GRAD", "UNDERGRAD",  "LEGAL", "PROFESSOR", "TECH", "ADMINISTRATIVE", "FACULTY", "ARTS",
+	"HEALTH", "RESEARCH", "RETIRED", "OTHER")
+
 occupation_match_dict = {
-	"UNDERGRAD": undergrad_re,
 	"PROFESSOR": professor_re,
 	"TECH": tech_re,
 	"ADMINISTRATIVE": admin_re,
@@ -453,6 +455,7 @@ occupation_match_dict = {
 	"ARTS": arts_re,
 	"HEALTH": health_re,
 	"GRAD": grad_re,
+	"UNDERGRAD": undergrad_re,
 	"RESEARCH": research_re,
 	"RETIRED": retired_re,
 	"LEGAL": legal_re,
