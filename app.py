@@ -20,7 +20,7 @@ d = [
 	{
 		"name" : "Sanders",
 		"party" : "dem",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -30,7 +30,7 @@ d = [
 	{
 		"name" : "Clinton",
 		"party" : "dem",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -40,7 +40,7 @@ d = [
 	{
 		"name" : "Lessig",
 		"party" : "dem",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -50,7 +50,7 @@ d = [
 	{
 		"name" : "O'Malley",
 		"party" : "dem",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -60,7 +60,7 @@ d = [
 	{
 		"name" : "Webb",
 		"party" : "dem",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -70,7 +70,7 @@ d = [
 	{
 		"name" : "Carson",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -80,7 +80,7 @@ d = [
 	{
 		"name" : "Cruz",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -90,7 +90,7 @@ d = [
 	{
 		"name" : "Kasich",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -100,7 +100,7 @@ d = [
 	{
 		"name" : "Bush",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -110,7 +110,7 @@ d = [
 	{
 		"name" : "Perry",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -120,7 +120,7 @@ d = [
 	{
 		"name" : "Fiorina",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -130,7 +130,7 @@ d = [
 	{
 		"name" : "Rubio",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -140,7 +140,7 @@ d = [
 	{
 		"name" : "Paul",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -150,7 +150,7 @@ d = [
 	{
 		"name" : "Trump",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -160,7 +160,7 @@ d = [
 	{
 		"name" : "Graham",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -170,7 +170,7 @@ d = [
 	{
 		"name" : "Huckabee",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -180,7 +180,7 @@ d = [
 	{
 		"name" : "Christie",
 		"party" : "rep",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -190,7 +190,7 @@ d = [
 	{
 		"name" : "Other",
 		"party" : "mixed",
-		"donators" : 0,
+		"contributions" : 0,
 		"total" : 0,
 		"colleges_total" : 0,
 		"colleges" : [],
@@ -484,7 +484,7 @@ for row in dict_reader:
 	amt = float(row["contb_receipt_amt"])
 
 	cand["total"] += amt
-	cand["donators"] += 1
+	cand["contributions"] += 1
 	# print cand["total"]
 
 	college = format_college( row["contbr_employer"], row["contbr_city"] )
@@ -495,7 +495,7 @@ for row in dict_reader:
 		curr_c = None 
 		for c in college_arr:
 			if c["name"] == college:
-				c["donators"] += 1
+				c["contributions"] += 1
 				c["total"] += amt
 				curr_c = c 
 				break
@@ -503,7 +503,7 @@ for row in dict_reader:
 		if curr_c is None:
 			new_c = {
 				"name" : college,
-				"donators" : 1,
+				"contributions" : 1,
 				"total" : amt
 
 			}
@@ -520,17 +520,17 @@ for row in dict_reader:
 			for j in cand["jobs"]:
 				if j["title"] == job:
 					j["total"] += amt
-					j["donators"] += 1
+					j["contributions"] += 1
 					found_job = True
 
 					if j["colleges"].has_key(coll_name):
-						j["colleges"][coll_name]["donators"] += 1
+						j["colleges"][coll_name]["contributions"] += 1
 						j["colleges"][coll_name]["total"] += amt
 
 					else:
 						j["colleges"][coll_name] = {
 							"total" : amt,
-							"donators" : 1
+							"contributions" : 1
 						}
 
 
@@ -540,12 +540,12 @@ for row in dict_reader:
 				j = {
 					"title" : job,
 					"total" : amt,
-					"donators" : 1,
+					"contributions" : 1,
 					"colleges" : {}
 				}
 
 				j["colleges"][coll_name] = {
-					"donators" : 1,
+					"contributions" : 1,
 					"total" : amt
 				}
 
@@ -562,10 +562,13 @@ for row in dict_reader:
 			possible_colleges_set.add(row["contbr_employer"])
 			# print row["contbr_employer"]
 
-print "UNKNOWN CITIES: "
-for item in unknown_cities_set:
-	print item 
-print len(unknown_cities_set)
+# print "UNKNOWN CITIES: "
+# for item in unknown_cities_set:
+	# print item 
+# print len(unknown_cities_set)
+
+for da in d:
+	da["colleges"] = sorted(da["colleges"], key=lambda c: c["name"])
 
 # for item in possible_colleges_set:
 # 	print item 
@@ -575,11 +578,11 @@ print len(unknown_cities_set)
 	# city = row["contbr_city"] 
 	# if loc.has_key(city):
 	# 	loc[city]["total"] += amt
-	# 	loc[city]["donators"] += 1
+	# 	loc[city]["contributions"] += 1
 	# else:
 	# 	loc[city] = {
 	# 		"total" : amt,
-	# 		"donators" : 1 
+	# 		"contributions" : 1 
 	# 	}
 
 json.dump(d, jsonfile, indent=4, separators=(',', ': '))
