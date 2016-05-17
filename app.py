@@ -437,31 +437,32 @@ legal_re = re.compile("ATTORNEY|LAWYER")
 other_re = re.compile("[a-z][0-9]")
 
 
-occupation_match_set = ("GRAD", "UNDERGRAD",  "LEGAL", "PROFESSOR", "TECH", "ADMINISTRATIVE", "FACULTY", "ARTS",
-	"HEALTH", "RESEARCH", "RETIRED", "OTHER")
+# occupation_match_set = ("GRAD", "UNDERGRAD",  "LEGAL", "PROFESSOR", "TECH", "ADMINISTRATIVE", "FACULTY", "ARTS",
+# 	"HEALTH", "RESEARCH", "RETIRED", "OTHER")
 
-occupation_match_dict = {
-	"PROFESSOR": professor_re,
-	"TECH": tech_re,
-	"ADMINISTRATIVE": admin_re,
-	"FACULTY": faculty_re,
-	"ARTS": arts_re,
-	"HEALTH": health_re,
-	"GRAD": grad_re,
-	"UNDERGRAD": undergrad_re,
-	"RESEARCH": research_re,
-	"RETIRED": retired_re,
-	"LEGAL": legal_re,
-	"OTHER": other_re
-}
+# occupation_match_dict = {
+# 	"PROFESSOR": professor_re,
+# 	"TECH": tech_re,
+# 	"ADMINISTRATIVE": admin_re,
+# 	"FACULTY": faculty_re,
+# 	"ARTS": arts_re,
+# 	"HEALTH": health_re,
+# 	"GRAD": grad_re,
+# 	"UNDERGRAD": undergrad_re,
+# 	"RESEARCH": research_re,
+# 	"RETIRED": retired_re,
+# 	"LEGAL": legal_re,
+# 	"OTHER": other_re
+# }
 
-occupation_dict = {
-}
+# occupation_dict = {
+# }
 
 occupation_dict2 = {
-	"PROFESSOR": [
+	"FACULTY": [
 		"PROFESSOR",
 		"FACULTY ADVISER",
+		"FACULTY, DISTINGUISHED SCIENTIST",
 		"PROFESSOR OF ASTROPHYSICS",
 		"PROFESSOR PHYSICIAN",
 		"PROFESSOR AND ADMINISTRATOR",
@@ -507,7 +508,8 @@ occupation_dict2 = {
 		"EDUCATION",
 		"FACULTY", 
 		"DISTINGUISHED VISITOR/FACULTY ADVISOR",
-		"PROFESSOR OF EPIDEMIOLOGY AND ENVIRNOM"
+		"PROFESSOR OF EPIDEMIOLOGY AND ENVIRNOM",
+		"STAFF"
 	],
 	"TECH": [
 		"TECH",
@@ -586,7 +588,9 @@ occupation_dict2 = {
 		"DIRECTOR, UCSD RETIREMENT RESOURCE CEN",
 		"DIRECTOR OF INTERNATIONAL RELATIONS",
 		"CAREER RESOURCES COORDINATOR, CAREER C",
-		"OUTREACH COORDINATOR"
+		"OUTREACH COORDINATOR",
+		"EXECUTIVE DIRECTOR, EMERGING INITIATIV",
+		"FACILITIES/PURCHASING MANAGER"
 	],
 	"DATA" : [
 		"ACCOUNTANT",
@@ -753,10 +757,8 @@ occupation_dict2 = {
 		"REFUSED",
 		"INTERN",
 		"KAYAKING INSTRUCTOR",
-
 		"ATHLETICS PROFESSIONAL",
 		"JOURNAL EDITOR",
-		"FACILITIES/PURCHASING MANAGER",
 		"ACADEMIC",
 		"EDITOR, ACADEMIC JOURNAL",
 		"ACADEMIC SERVICES SPECIALIST",
@@ -768,12 +770,9 @@ occupation_dict2 = {
 		"INSTRUCTIONAL TECHNOLOGIST",
 		"AUDITOR",
 		"HISTOLOGY TECH",
-		"EXECUTIVE DIRECTOR, EMERGING INITIATIV",
-		"FACULTY, DISTINGUISHED SCIENTIST",
 		"LIBRARIAN",
 		"CONTRACT OFFICER",
 		"LIBRARY SUPERVISOR",
-		"STAFF",
 		"OFFICE ASSISTANT",
 		"LAW LIBRARIAN",
 		"EXTENSION SPECIALIST",
@@ -781,18 +780,18 @@ occupation_dict2 = {
 		"LABORER",
 		"HISTORIAN",
 		"ARCHIVIST",
-		"BOOK CONSERVATOR"
+		"BOOK CONSERVATOR",
 		"CONFERENCE SALES COORDINATOR",
 		"POWER PLANT OPERATOR",
 		"AHT II",
 		"PURCHASING SPECIALIST",
 		"CRA",
 		"CLIMATE ACTION MANAGER",
-		"INVESTIGATOR"
+		"INVESTIGATOR",
 		"PUBLISHER",
 		"COMPLIANCE CONSULTANT",
 		"SPECIALIST",
-		"ADVANCEMENT"
+		"ADVANCEMENT",
 		"CONTRACT WORKER",
 		"FUNDRAISING & COMMUNICATIONS",
 		"SEN. MHP",
@@ -801,7 +800,7 @@ occupation_dict2 = {
 		"SIGN LANGUAGE INTERPRETER",
 		"ACADEMI",
 		"SUPERVISOR",
-		"FUNDRAISER"
+		"FUNDRAISER",
 		"SENIOR SPECIALIST"
 
 	]
@@ -834,6 +833,8 @@ def format_job(input):
 		for j in item_list:
 			if j == input:
 				return i
+
+	print input 
 
 dict_reader = csv.DictReader(csvfile, fieldnames, delimiter = ',', quotechar = '"')
 
